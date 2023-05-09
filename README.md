@@ -35,7 +35,10 @@ Make sure you have the following software installed:
 
 2. In `src/main/resources/application.properties`, configure the database connection URL, username, and password.
 
-3. Build and run the project with Maven (`mvn spring-boot:run`) or Gradle (`gradle bootRun`).
+3. Build and run the project with Gradle (`gradle bootRun`).
+
+4. To run the tests, execute the following command in your terminal: `./gradlew test`
+
 
 ## Usage
 
@@ -46,9 +49,9 @@ Make sure you have the following software installed:
 
 ## Time Spent on Coding Problem
 
-- 0 hours on prep
-- 1.5 hours on the build
-- 1.5 hours total
+- 1 hour on prep
+- 2.5 hours on the build
+- 3.5 hours total
 
 ## Built With
 
