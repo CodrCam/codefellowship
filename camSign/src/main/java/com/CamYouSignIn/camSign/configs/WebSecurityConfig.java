@@ -1,7 +1,7 @@
 package com.CamYouSignIn.camSign.configs;
 
 
-import com.CamYouSignIn.camSign.controllers.SiteUserDetailsServiceImpl;
+import com.CamYouSignIn.camSign.services.SiteUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
