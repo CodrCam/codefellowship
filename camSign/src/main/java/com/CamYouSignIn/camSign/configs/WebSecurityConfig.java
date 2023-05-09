@@ -1,6 +1,5 @@
 package com.CamYouSignIn.camSign.configs;
 
-
 import com.CamYouSignIn.camSign.services.SiteUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -33,14 +32,15 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/signup").permitAll()
+                        .requestMatchers("/welcome").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin()
-                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/welcome").permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/login").permitAll()
                 .and()
                 .getSharedObject(AuthenticationManagerBuilder.class)
                 .userDetailsService(siteUserDetailsService)
