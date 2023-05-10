@@ -1,11 +1,9 @@
 package com.CamYouSignIn.camSign.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ApplicationUser {
@@ -20,8 +18,16 @@ public class ApplicationUser {
     private String lastName;
     private LocalDate dateOfBirth;
     private String bio;
+    private String profilePicture;
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
 
     public ApplicationUser() {
+        // Assign a default image URL to the profilePicture field
+        this.profilePicture = "www.picture.com";
+        this.posts = new ArrayList<>();
     }
 
     public ApplicationUser(String username, String password, String firstName, String lastName, String dateOfBirth, String bio) {
@@ -31,7 +37,10 @@ public class ApplicationUser {
         this.lastName = lastName;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
         this.bio = bio;
+        this.profilePicture = "https://your-default-image-url-here";
+        this.posts = new ArrayList<>();
     }
+
 
 
     // Getters and setters for all fields
@@ -90,5 +99,21 @@ public class ApplicationUser {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
