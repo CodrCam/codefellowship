@@ -8,14 +8,6 @@
 <h1>Welcome to CodeFellowship</h1>
 <p>Connect with fellow code enthusiasts and share your journey.</p>
 
-<div th:if="${username}">
-    <p>Welcome, <span th:text="${username}"></span>!</p>
-    <a href="/logout">Logout</a>
-</div>
-
-<div th:unless="${username}">
-    <a href="/signup">Sign Up</a>
-    <a href="/login">Login</a>
-</div>
+<div th:replace="~{navbar::navbar}"></div>
 </body>
 </html>

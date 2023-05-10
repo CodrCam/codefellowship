@@ -2,21 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>User Profile</title>
 </head>
 <body>
-<h1>Welcome, <span th:text="${user.firstName}">User</span>!</h1>
+<h1 th:text="${user.firstName} + ' ' + ${user.lastName} + '\'s Profile'"></h1>
 <p>
-    You have successfully registered and logged in.
+    <strong>Date of Birth:</strong> <span th:text="${user.dateOfBirth}"></span>
+</p>
+<p>
+    <strong>Bio:</strong> <span th:text="${user.bio}"></span>
 </p>
 
-<h2>Your Posts</h2>
+<h2>User's Posts</h2>
 <ul>
     <th:block th:each="post : ${user.posts}">
         <li th:text="${post.body}"></li>
     </th:block>
 </ul>
-<a href="/createPost">Create a new post</a>
 
 <div th:replace="~{navbar::navbar}"></div>
 </body>

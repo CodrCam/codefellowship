@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<nav th:fragment="navbar">
+    <div th:if="${username}">
+        <p>Welcome, <span th:text="${username}"></span>!</p>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div th:unless="${username}">
+        <a href="/signup">Sign Up</a>
+        <a href="/login">Login</a>
+    </div>
+</nav>
+</body>
+</html>
