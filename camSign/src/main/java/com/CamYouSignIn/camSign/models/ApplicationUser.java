@@ -1,56 +1,65 @@
 package com.CamYouSignIn.camSign.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "application_users")
 public class ApplicationUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private LocalDate dateOfBirth;
+
+    @Column(nullable = false)
     private String bio;
-    private String profilePicture;
 
+    @Column(nullable = false)
+    private String role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "applicationUser")
     private List<Post> posts;
 
+    // Default constructor for JPA
     public ApplicationUser() {
-        // Assign a default image URL to the profilePicture field
-        this.profilePicture = "www.picture.com";
-        this.posts = new ArrayList<>();
     }
 
-    public ApplicationUser(String username, String password, String firstName, String lastName, String dateOfBirth, String bio) {
+    public ApplicationUser(String username, String password, String firstName, String lastName, LocalDate dateOfBirth, String bio) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+        this.dateOfBirth = dateOfBirth;
         this.bio = bio;
-        this.profilePicture = "https://your-default-image-url-here";
-        this.posts = new ArrayList<>();
+        this.role = "ROLE_USER"; // Default role for new users
     }
-
-
 
     // Getters and setters for all fields
 
-    public Long getId() {
+    public long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -101,12 +110,12 @@ public class ApplicationUser {
         this.bio = bio;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getRole() {
+        return role;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public List<Post> getPosts() {
