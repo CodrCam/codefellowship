@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Error Page</title>
+</head>
+<body>
+<h1>To Error is Human</h1>
+<p>So you are not forgiven.</p>
+
+
+<div>
+  <h2>Error Details</h2>
+  <p>Code: <span th:text="${errorCode}">Error code</span></p>
+  <p>Message: <span th:text="${errorMessage}">Botch Job</span></p>
+</div>
+
+<div th:replace="~{navbar::navbar}"></div>
+</body>
+</html>

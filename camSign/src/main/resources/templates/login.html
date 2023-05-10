@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
-<h1>Login to your account</h1>
-<form action="/login" method="post">
+<h1>Login</h1>
+
+<form th:action="@{/login}" method="post">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username">
     <br>
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+    <input type="password" id="password" name="password">
     <br>
-    <input type="submit" value="Login">
+    <button type="submit">Login</button>
 </form>
-<p>Don't have an account? <a href="/signup">Sign Up</a></p>
+
+<div th:replace="~{navbar::navbar}"></div>
 </body>
 </html>

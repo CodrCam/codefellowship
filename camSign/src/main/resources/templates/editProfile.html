@@ -2,18 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Edit Profile</title>
 </head>
 <body>
-<h1>Sign Up</h1>
+<h1>Edit Profile</h1>
 
-<form th:action="@{/signup}" th:object="${newUser}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" th:field="*{username}">
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" th:field="*{password}">
-    <br>
+<form th:action="@{/editProfile}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}">
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" th:field="*{firstName}">
     <br>
@@ -26,9 +21,10 @@
     <label for="bio">Bio:</label>
     <textarea id="bio" th:field="*{bio}" rows="4" cols="50"></textarea>
     <br>
-    <button type="submit">Sign Up</button>
+    <button type="submit">Save Changes</button>
 </form>
 
-<div th:replace="navbar::navbar"></div>
+<div th:replace="~{navbar::navbar}"></div>
+
 </body>
 </html>
